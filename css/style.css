@@ -1,0 +1,92 @@
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+    }
+
+    .banner {
+      padding: 5.0em;
+      text-align: center;
+      background: #f3e849;
+      color: black;
+    }
+
+    .menu {
+      display: flex;
+      background-color: rgb(202, 101, 6);
+      margin-bottom: 60px;
+    }
+
+    .menu a {
+      color: white;
+      padding: 16px 24px;
+      text-decoration: none;
+      text-align: center;
+    }
+
+    .menu a:hover {
+      background-color: rgb(232, 240, 128);
+      color: black;
+    }
+
+    .img-responsive {
+      border-radius: 80px;
+    }
+
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .main {
+      flex: 70%;
+      background-color: white;
+      padding: 20px;
+      font-size: 18px;
+      /* tamanho da fonte para garantir contraste aderente de acordo com as normas do WCAG 2.1 */
+    }
+
+    .work-content {
+      font-size: larger;
+      /* aumentar o espaçamento entre as linhas favorece quem possui dislexia, por exemplo.*/
+    }
+
+    .contentinfo {
+      padding: 20px;
+      text-align: center;
+      background: #f3e849;
+    }
+
+    a:hover,
+    a:visited,
+    a:focus {
+      color: black;
+      outline: 3px dotted;
+      padding: 1.0em;
+    }
+
+    .secondary {
+      padding: 3em 0;
+      background-color: rgb(202, 101, 6);
+      color: white;
+      font-weight: 700;
+      /* peso da fonte para garantir contraste aderente de acordo com as normas do WCAG 2.1 */
+    }
+
+    .container-secondary {
+      width: 90%;
+      max-width: 1280px;
+      margin: 0 auto;
+
+    }
+
+    @media screen and (max-width: 700px) {
+
+      .row,
+      .menu {
+        flex-direction: column;
+      }
+    }

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulaire de contact accessible RGAA</title>
+  <link rel="stylesheet" href="contact.css">
+</head>
+
+<body>
+  <header>
+    <div>
+      <p><u>Current language:</u> English (<a href="contact.js" class="language"><b>click here to put in French</b></a>)
+      </p>
+    </div>
+    <div class="banner">
+      <img class="logo" src="./images/LogoBlindless.png" alt="Logo de la page web, il est inscrit Blindless">
+    </div>
+    <nav>
+      <div class="menu">
+        <a href="index_anglais.html" class="accueil a"><b>Welcome</b></a>
+        <a href="" class="a"><b>News</b></a>
+        <a href="" class="a"><b>Videos</b></a>
+        <a href="" class="a"><b>Debates</b></a>
+        <a href="" class="a"><b>World</b></a>
+        <a href="contact_anglais.html" class="a"><b>Services</b></a>
+      </div>
+      <div class="FirstBar">
+        <a href="">Culture</a>
+        <a href="">Environment</a>
+        <a href="">Policy</a>
+        <a href="">Economy</a>
+        <a href="">Legal</a>
+        <a href="">Energy</a>
+        <a href="">Youth</a>
+        <a href="">State</a>
+        <a href="">Finance</a>
+        <a href="">Management</a>
+        <a href="">Innovation</a>
+      </div>
+    </nav>
+  </header>
+  <main style="padding: 45px;">
+    <h1>Contact form</h1>
+    <p>Fields preceded by a * are required</p>
+    <form id="contact-form" action="envoyer_email.php" method="POST" novalidate>
+      <div>
+        <label for="nom"><b>Name*</b></label>
+        <input type="text" id="nom" name="nom" required aria-required="true">
+        <span class="erreur" id="erreur-nom"></span>
+      </div>
+      <div>
+        <label for="prenom"><b>First name*</b></label>
+        <input type="text" id="prenom" name="prenom" required aria-required="true">
+        <span class="erreur" id="erreur-prenom"></span>
+      </div>
+      <div>
+        <label for="email"><b>Email*</b></label>
+        <input type="email" id="email" name="email" required aria-required="true">
+        <span class="erreur" id="erreur-email"></span>
+      </div>
+      <div>
+        <label for="telephone"><b>Phone*</b></label>
+        <input type="tel" id="telephone" name="telephone" required aria-required="true">
+        <span class="erreur" id="erreur-telephone"></span>
+      </div>
+      <div>
+        <label for="message"><b>How can I help you ?*</b></label>
+        <textarea id="message" name="message" required aria-required="true"></textarea>
+        <span class="erreur" id="erreur-message"></span>
+      </div>
+      <button type="submit">I would like to be contacted</button>
+    </form>
+    <script src="contact.js"></script>
+  </main>
+</body>
+<footer class="contentinfo">
+  <a href="mentions.html"><b>Mentions légales</b></a>
+  <p>@credits</p>
+  <a href="">Plan du site</a>
+</footer>
+
+</html>

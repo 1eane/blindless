@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="pt-BR, en">
+
+<head>
+  <title>Blindless</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description"
+    content="Flex Box, Foco Visivel e Contraste Textual: aprendizado em CSS de acordo com a WCAG 2.1." />
+  <meta name="keywords" content="Acessibilidade, CSS, Flex Box, Foco Visível, Contraste Textual, Aprendizado.">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    .act,
+    h2 {
+      margin-left: 50px;
+    }
+
+    h2 {
+      background-color: rgb(0, 0, 0);
+      color: rgb(255, 255, 255);
+      padding: 10px;
+      margin: 3px;
+      font-size: 32px;
+    }
+
+    .actu {
+      background-color: rgb(255, 255, 255);
+      color: rgb(0, 0, 0);
+      padding: 10px;
+      margin: 3px;
+      font-size: 15px;
+      border: 2px solid rgb(0, 0, 0);
+    }
+
+    body {
+      font-family: Arial;
+      margin: 0;
+      font-size: 16px;
+    }
+
+    .FirstBar {
+      background-color: rgb(0, 0, 0);
+      text-align: center;
+      padding: 12px;
+    }
+
+    .FirstBar a {
+      text-decoration: none;
+      color: #ffffff;
+      padding-inline: 15px;
+    }
+
+    .FirstBar a:hover {
+      color: rgb(168, 168, 168);
+      font-weight: bold;
+      text-decoration: underline;
+    }
+
+    .banner {
+      padding: 1.0em;
+      text-align: center;
+      background: white;
+      color: black;
+    }
+
+    .menu {
+      display: flex;
+      margin-bottom: 60px;
+      justify-content: center;
+    }
+
+    .menu a {
+      color: black;
+      padding: 16px 40px;
+      text-decoration: none;
+      text-align: center;
+      font-size: 18px;
+    }
+
+    .menu a:hover {
+      background-color: rgb(189, 189, 189);
+      color: black;
+      padding: 16px 40px;
+    }
+
+    .logo {
+      width: 11%;
+    }
+
+    .img-responsive {
+      border-radius: 80px;
+    }
+
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .main {
+      flex: 70%;
+      background-color: white;
+      padding: 20px;
+      font-size: 18px;
+    }
+
+    .work-content {
+      font-size: larger;
+    }
+
+    .contentinfo {
+      padding: 20px;
+      text-align: center;
+      background: #000000;
+      color: white;
+    }
+
+    .a:hover,
+    .a:visited,
+    .a:focus {
+      color: black;
+      outline: 3px dotted;
+      padding: 1.0em;
+    }
+
+    .secondary {
+      padding: 3em 0;
+      background-color: rgb(0, 0, 0);
+      color: white;
+      font-weight: 700;
+    }
+
+    .container-secondary {
+      width: 90%;
+      max-width: 1280px;
+      margin: 0 auto;
+
+    }
+
+    @media screen and (max-width: 700px) {
+
+      .row,
+      .menu {
+        flex-direction: column;
+      }
+    }
+
+    input:hover {
+      opacity: 0.5;
+    }
+
+    .box {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      margin: 0 2%;
+    }
+
+    .box1 {
+      display: flex;
+      margin: 0 3%;
+    }
+
+    .bloc {
+      border-spacing: 70px;
+    }
+
+    .bidonville {
+      height: 400px;
+    }
+
+    .neige {
+      height: 270px;
+    }
+
+    .marche {
+      height: 270px;
+    }
+
+    .jardin {
+      height: 270px;
+    }
+
+    .zoom-image {
+      overflow: hidden
+    }
+
+    .zoom-image img:hover {
+      height: 400px;
+      transform: scale(1.3);
+      transition: 1s ease-in-out;
+    }
+
+    .chevreuil {
+      height: 400px;
+    }
+
+    .wrap {
+      margin: 1%;
+      position: relative;
+    }
+
+    .display-position {
+      position: absolute;
+      top: 110px;
+      left: 20px;
+      width: 70%;
+    }
+
+    .stretch {
+      width: fit-content;
+    }
+
+    .button_slide {
+      color: #000000;
+      border: 2px solid rgb(0, 0, 0);
+      background-color: #ffffff;
+      border-radius: 0px;
+      padding: 18px 36px;
+      display: inline-block;
+      font-family: "Lucida Console", Monaco, monospace;
+      font-size: 14px;
+      letter-spacing: 1px;
+      cursor: pointer;
+      box-shadow: inset 0 0 0 0 #838383;
+      -webkit-transition: ease-out 0.4s;
+      -moz-transition: ease-out 0.4s;
+      transition: ease-out 0.4s;
+    }
+
+    .slide_down:hover {
+      box-shadow: inset 0 100px 0 0 #838383;
+    }
+
+    .language {
+      color: #616161;
+    }
+
+    .wrapper {
+      font-size: 1em;
+    }
+
+    .wrapper p {
+      font-size: 1em;
+    }
+
+    input[id=normal]:checked~.wrapper {
+      font-size: 1em;
+    }
+
+    input[id=gross]:checked~.wrapper {
+      font-size: 1.5em;
+    }
+
+    input[id=groesser]:checked~.wrapper {
+      font-size: 2em;
+    }
+
+    input[id=hulk]:checked~.wrapper {
+      font-size: 2.5em;
+    }
+
+
+
+
+
+    .wrapper {
+      font-size: 1em;
+    }
+
+    .wrapper p {
+      font-size: 1em;
+    }
+
+    input[id=normal]:checked~.wrapper {
+      font-size: 1em;
+    }
+
+    input[id=gross]:checked~.wrapper {
+      font-size: 1.5em;
+    }
+
+    input[id=groesser]:checked~.wrapper {
+      font-size: 2em;
+    }
+
+    input[id=hulk]:checked~.wrapper {
+      font-size: 2.5em;
+    }
+
+    .lien {
+      text-decoration: none;
+      color: #000000;
+    }
+
+    .lien:hover {
+      text-decoration: none;
+      color: #000000;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div>
+      <p><u>Langue actuelle:</u> Français (<a href="index_anglais.html" class="language"><b>clickez ici pour mettre en
+            anglais</b></a>)</p>
+    </div>
+    <div class="banner">
+      <img class="logo" src="./images/LogoBlindless.png" alt="Logo de la page web, il est inscrit Blindless">
+    </div>
+    <nav>
+      <div class="menu">
+        <a href="index.html" class="accueil a"><b>Accueil</b></a>
+        <a href="" class="a"><b>Actualités</b></a>
+        <a href="" class="a"><b>Vidéos</b></a>
+        <a href="" class="a"><b>Débats</b></a>
+        <a href="" class="a"><b>Monde</b></a>
+        <a href="contact.html" class="a"><b>Services</b></a>
+      </div>
+      <div class="FirstBar">
+        <a href="">Culture</a>
+        <a href="">Environnement</a>
+        <a href="">Politique</a>
+        <a href="">Economie</a>
+        <a href="">Juridique</a>
+        <a href="">Energie</a>
+        <a href="">Jeunesse</a>
+        <a href="">Etat</a>
+        <a href="">Finance</a>
+        <a href="">Gestion</a>
+        <a href="">Innovation</a>
+      </div>
+    </nav>
+  </header>
+  <br><br>
+  <h1 class="act"><b>Actualités</b></h1>
+  <h3 class="act">Les actualités des dernières semaines</h3>
+  <div class="box bloc">
+    <div class="wrap">
+      <a href="https://google.fr">
+        <div class="zoom-image">
+          <img class="bidonville" src="./images/bidonville_nanterre.jpg" alt="Bidonville de Nanterre">
+        </div>
+      </a>
+
+      <div class="display-position">
+        <h2>Elisabeth Borne essaye de rassurer la majorité</h2>
+        <p class="actu">Le sort du projet de loi immigration reste pour le moment en suspens. La commission mixte
+          paritaire (CMP) a repris ses travaux ce mardi 19 décembre à 10 h 30, avec encore plusieurs
+          dizaines d’articles à examiner. Un accord se profile sur les APL, principal point de blocage
+          lundi soir lors des discussions.</p>
+        <br>
+        <div class="button_slide slide_down">Savoir plus </div>
+      </div>
+    </div>
+    <div class="wrap">
+
+      <a href="https://google.fr">
+        <div class="zoom-image">
+          <img class="chevreuil" src="./images/chevreuil.jpg" alt="chevreuil">
+        </div>
+      </a>
+
+      <div class="display-position">
+        <h2>Le chevreuil européen</h2>
+        <p class="actu">Tous les lundis, Patrick Camus et Christian Fontaine, deux habitants du pays d’Auray (Morbihan),
+          scientifiques et enseignants de formation, nous font redécouvrir plantes et animaux de la région
+          alréenne. Ce lundi 18 décembre 2023, zoom sur le chevreuil européen.</p>
+        <br>
+        <div class="button_slide slide_down">Savoir plus </div>
+      </div>
+    </div>
+  </div>
+
+  <br>
+  <br>
+  <br>
+
+  <div class="box1 bloc">
+    <div class="wrap">
+      <a href="https://google.fr">
+        <div>
+          <img class="neige" src="./images/neige.jpg" alt="chevreuil">
+        </div>
+      </a>
+      <div class="display-position">
+        <h2>Vague de froid en Bretagne</h2>
+        <br>
+        <div class="button_slide slide_down"><a class="lien" href="margaux.html">Savoir plus</a></div>
+      </div>
+    </div>
+    <div class="wrap">
+
+      <a href="https://google.fr">
+        <div>
+          <img class="marche" src="./images/marche.jpg" alt="chevreuil">
+        </div>
+      </a>
+      <div class="display-position">
+        <h2>Réouverture des marchés</h2>
+        <br>
+        <div class="button_slide slide_down"><a class="lien" href="leane.html">Savoir plus</a></div>
+      </div>
+    </div>
+    <div class="wrap">
+
+      <a href="https://google.fr">
+        <div>
+          <img class="jardin" src="./images/jardin.jpg" alt="chevreuil">
+        </div>
+      </a>
+      <div class="display-position">
+        <h2>Calendrier de jardinage</h2>
+        <br>
+        <div class="button_slide slide_down"><a class="lien" href="yvan.html">Savoir plus</a></div>
+      </div>
+    </div>
+  </div>
+
+  <br>
+  <br>
+  <br>
+  <section class="secondary">
+    <div class="container-secondary">
+      <div class="col">
+        <blockquote><em>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident ipsum eligendi repellat non
+            nostrum. Veniam at distinctio suscipit aliquam, a dolorem quasi aliquid voluptatum odio ut molestias veniam
+            dicta reiciendis.</em></blockquote>
+      </div>
+    </div>
+    </div>
+  </section>
+  <div>
+    <article style="padding: 45px;">
+      <h1><b>Titre</b> </h1>
+      <h3>Sous-titre</h3>
+      <br>
+      <input type="radio" name="fontsize" id="normal" value="1" /> <label for="normal">100%</label>
+      <input type="radio" name="fontsize" id="gross" value="1.5" /> <label for="gross">150%</label>
+      <input type="radio" name="fontsize" id="groesser" value="2" /> <label for="groesser">200%</label>
+      <input type="radio" name="fontsize" id="hulk" value="2.5" /> <label for="hulk">250%</label>
+
+      <div class="wrapper">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui natus nam neque iusto perferendis aut nostrum
+          reiciendis architecto atque ducimus mollitia rem nobis tenetur sit nisi laboriosam unde sunt debitis!</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae soluta eaque doloremque a incidunt
+          adipisci sint consequuntur quos! Iure animi omnis facilis quas minus ipsum beatae expedita eaque placeat
+          tenetur.</p>
+      </div>
+      <br><br>
+      <h1><b>Titre</b> </h1>
+      <h3>Sous-titre</h3>
+      <br>
+      <input type="radio" name="fontsize" id="normal" value="1" /> <label for="normal">100%</label>
+      <input type="radio" name="fontsize" id="gross" value="1.5" /> <label for="gross">150%</label>
+      <input type="radio" name="fontsize" id="groesser" value="2" /> <label for="groesser">200%</label>
+      <input type="radio" name="fontsize" id="hulk" value="2.5" /> <label for="hulk">250%</label>
+
+      <div class="wrapper">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui natus nam neque iusto perferendis aut nostrum
+          reiciendis architecto atque ducimus mollitia rem nobis tenetur sit nisi laboriosam unde sunt debitis!</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae soluta eaque doloremque a incidunt
+          adipisci sint consequuntur quos! Iure animi omnis facilis quas minus ipsum beatae expedita eaque placeat
+          tenetur.</p>
+      </div>
+    </article>
+  </div>
+  <div vw class="enabled" id="PluginLibras" aria-labelledby="tradutordelibras">
+    <div vw-access-button class="active" role="button"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+  <script src="index.js"></script>
+  <footer class="contentinfo">
+    <a href="mentions.html"><b>Mentions légales</b></a>
+    <p>@credits</p>
+    <a href="">Plan du site</a>
+  </footer>
+</body>
+
+</html>

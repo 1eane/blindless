@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="pt-BR, en">
+
+<head>
+  <title>Blindless</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description"
+    content="Flex Box, Foco Visivel e Contraste Textual: aprendizado em CSS de acordo com a WCAG 2.1." />
+  <meta name="keywords" content="Acessibilidade, CSS, Flex Box, Foco Visível, Contraste Textual, Aprendizado.">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin-left: 50px;
+    }
+
+    h2 {
+      background-color: rgb(0, 0, 0);
+      color: rgb(255, 255, 255);
+      padding: 10px;
+      margin: 3px;
+      font-size: 32px;
+    }
+
+    .actu {
+      background-color: rgb(255, 255, 255);
+      color: rgb(0, 0, 0);
+      padding: 10px;
+      margin: 3px;
+      font-size: 15px;
+      border: 2px solid rgb(0, 0, 0);
+    }
+
+    body {
+      font-family: Arial;
+      margin: 0;
+      font-size: 16px;
+    }
+
+    .FirstBar {
+      background-color: rgb(0, 0, 0);
+      text-align: center;
+      padding: 12px;
+    }
+
+    .FirstBar a {
+      text-decoration: none;
+      color: #ffffff;
+      padding-inline: 15px;
+    }
+
+    .FirstBar a:hover {
+      color: rgb(168, 168, 168);
+      font-weight: bold;
+      text-decoration: underline;
+    }
+
+    .banner {
+      padding: 1.0em;
+      text-align: center;
+      background: white;
+      color: black;
+    }
+
+    .menu {
+      display: flex;
+      margin-bottom: 60px;
+      justify-content: center;
+    }
+
+    .menu a {
+      color: black;
+      padding: 16px 40px;
+      text-decoration: none;
+      text-align: center;
+      font-size: 18px;
+    }
+
+    .menu a:hover {
+      background-color: rgb(189, 189, 189);
+      color: black;
+      padding: 16px 40px;
+    }
+
+    .logo {
+      width: 11%;
+    }
+
+    .img-responsive {
+      border-radius: 80px;
+    }
+
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .main {
+      flex: 70%;
+      background-color: white;
+      padding: 20px;
+      font-size: 18px;
+    }
+
+    .work-content {
+      font-size: larger;
+    }
+
+    .contentinfo {
+      padding: 20px;
+      text-align: center;
+      background: #f3e849;
+    }
+
+    .a:hover,
+    .a:visited,
+    .a:focus {
+      color: black;
+      outline: 3px dotted;
+      padding: 1.0em;
+    }
+
+    .secondary {
+      padding: 3em 0;
+      background-color: rgb(0, 0, 0);
+      color: white;
+      font-weight: 700;
+    }
+
+    .container-secondary {
+      width: 90%;
+      max-width: 1280px;
+      margin: 0 auto;
+
+    }
+
+    @media screen and (max-width: 700px) {
+
+      .row,
+      .menu {
+        flex-direction: column;
+      }
+    }
+
+    input:hover {
+      opacity: 0.5;
+    }
+
+    .box {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      margin: 0 2%;
+    }
+
+    .box1 {
+      display: flex;
+      margin: 0 3%;
+    }
+
+    .bloc {
+      border-spacing: 70px;
+    }
+
+    .bidonville {
+      height: 400px;
+    }
+
+    .neige {
+      height: 270px;
+    }
+
+    .marche {
+      height: 270px;
+    }
+
+    .jardin {
+      height: 270px;
+    }
+
+    .zoom-image {
+      overflow: hidden
+    }
+
+    .zoom-image img:hover {
+      height: 400px;
+      transform: scale(1.3);
+      transition: 1s ease-in-out;
+    }
+
+    .chevreuil {
+      height: 400px;
+    }
+
+    .wrap {
+      margin: 1%;
+      position: relative;
+    }
+
+    .display-position {
+      position: absolute;
+      top: 110px;
+      left: 20px;
+      width: 70%;
+    }
+
+    .stretch {
+      width: fit-content;
+    }
+
+    .button_slide {
+      color: #000000;
+      border: 2px solid rgb(0, 0, 0);
+      background-color: #ffffff;
+      border-radius: 0px;
+      padding: 18px 36px;
+      display: inline-block;
+      font-family: "Lucida Console", Monaco, monospace;
+      font-size: 14px;
+      letter-spacing: 1px;
+      cursor: pointer;
+      box-shadow: inset 0 0 0 0 #838383;
+      -webkit-transition: ease-out 0.4s;
+      -moz-transition: ease-out 0.4s;
+      transition: ease-out 0.4s;
+    }
+
+    .slide_down:hover {
+      box-shadow: inset 0 100px 0 0 #838383;
+    }
+
+    .language {
+      color: #616161;
+    }
+
+    .lien {
+      text-decoration: none;
+      color: #000000;
+    }
+
+    .lien:hover {
+      text-decoration: none;
+      color: #000000;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div>
+      <p><u>Current language:</u> English (<a href="index.html" class="language"><b>click here to put in French</b></a>)
+      </p>
+    </div>
+    <div class="banner">
+      <img class="logo" src="./images/LogoBlindless.png" alt="Logo de la page web, il est inscrit Blindless">
+    </div>
+    <nav>
+      <div class="menu">
+        <a href="index_anglais.html" class="accueil a"><b>Welcome</b></a>
+        <a href="" class="a"><b>News</b></a>
+        <a href="" class="a"><b>Videos</b></a>
+        <a href="" class="a"><b>Debates</b></a>
+        <a href="" class="a"><b>World</b></a>
+        <a href="contact_anglais.html" class="a"><b>Services</b></a>
+      </div>
+      <div class="FirstBar">
+        <a href="">Culture</a>
+        <a href="">Environment</a>
+        <a href="">Policy</a>
+        <a href="">Economy</a>
+        <a href="">Legal</a>
+        <a href="">Energy</a>
+        <a href="">Youth</a>
+        <a href="">State</a>
+        <a href="">Finance</a>
+        <a href="">Management</a>
+        <a href="">Innovation</a>
+      </div>
+    </nav>
+  </header>
+  <br><br>
+  <h1><b>News</b></h1>
+  <h3>News from recent weeks</h3>
+  <div class="box bloc">
+    <div class="wrap">
+      <a href="https://google.fr">
+        <div class="zoom-image">
+          <img class="bidonville" src="./images/bidonville_nanterre.jpg" alt="Bidonville de Nanterre">
+        </div>
+      </a>
+
+      <div class="display-position">
+        <h2>Elisabeth Borne tries to reassure the majority</h2>
+        <p class="actu">The fate of the immigration bill remains unresolved for the moment. The joint commission
+          (CMP) resumed its work this Tuesday, December 19 at 10:30 a.m., with several more
+          dozens of articles to review. An agreement looms on the APL, the main blocking point
+          Monday evening during the discussions.</p>
+        <br>
+        <div class="button_slide slide_down">Know more</div>
+      </div>
+    </div>
+    <div class="wrap">
+
+      <a href="https://google.fr">
+        <div class="zoom-image">
+          <img class="chevreuil" src="./images/chevreuil.jpg" alt="chevreuil">
+        </div>
+      </a>
+
+      <div class="display-position">
+        <h2>The European deer</h2>
+        <p class="actu">Every Monday, Patrick Camus and Christian Fontaine, two inhabitants of the Auray region
+          (Morbihan),
+          trained scientists and teachers, help us rediscover plants and animals of the region
+          Alrean. This Monday, December 18, 2023, zoom in on the European deer.</p>
+        <br>
+        <div class="button_slide slide_down">Know more</div>
+      </div>
+    </div>
+  </div>
+
+  <br>
+  <br>
+  <br>
+
+  <div class="box1 bloc">
+    <div class="wrap">
+
+      <a href="https://google.fr">
+        <div>
+          <img class="neige" src="./images/neige.jpg" alt="chevreuil">
+        </div>
+      </a>
+      <div class="display-position">
+        <h2>Cold wave in Brittany</h2>
+        <br>
+        <div class="button_slide slide_down"><a class="lien" href="margaux.html">Know more</a></div>
+      </div>
+    </div>
+    <div class="wrap">
+
+      <a href="https://google.fr">
+        <div>
+          <img class="marche" src="./images/marche.jpg" alt="chevreuil">
+        </div>
+      </a>
+      <div class="display-position">
+        <h2>Reopening of markets</h2>
+        <br>
+        <div class="button_slide slide_down"><a class="lien" href="leane.html">Know more</a></div>
+      </div>
+    </div>
+    <div class="wrap">
+
+      <a href="https://google.fr">
+        <div>
+          <img class="jardin" src="./images/jardin.jpg" alt="chevreuil">
+        </div>
+      </a>
+      <div class="display-position">
+        <h2>Gardening calendar</h2>
+        <br>
+        <div class="button_slide slide_down"><a class="lien" href="yvan.html">Know more</a></div>
+      </div>
+    </div>
+  </div>
+
+  <br>
+  <br>
+  <br>
+  <section class="secondary">
+    <div class="container-secondary">
+      <div class="col">
+        <blockquote><em>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident ipsum eligendi repellat non
+            nostrum. Veniam at distinctio suscipit aliquam, a dolorem quasi aliquid voluptatum odio ut molestias veniam
+            dicta reiciendis.</em></blockquote>
+      </div>
+    </div>
+    </div>
+  </section>
+  <div class="main">
+    <article>
+      <h1><b>Titre</b> </h1>
+      <h3>Sous-titre</h3>
+      <br>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident ipsum eligendi repellat non
+        nostrum. Veniam at distinctio suscipit aliquam, a dolorem quasi aliquid voluptatum odio ut molestias veniam
+        dicta reiciendis.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident ipsum eligendi repellat non
+        nostrum. Veniam at distinctio suscipit aliquam, a dolorem quasi aliquid voluptatum odio ut molestias veniam
+        dicta reiciendis.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident ipsum eligendi repellat non
+        nostrum. Veniam at distinctio suscipit aliquam, a dolorem quasi aliquid voluptatum odio ut molestias veniam
+        dicta reiciendis.
+      </p>
+      <h1><b>Titre</b></h1>
+      <h3>Sous-titre</h3>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident ipsum eligendi repellat non
+        nostrum. Veniam at distinctio suscipit aliquam, a dolorem quasi aliquid voluptatum odio ut molestias veniam
+        dicta reiciendis.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident ipsum eligendi repellat non
+        nostrum. Veniam at distinctio suscipit aliquam, a dolorem quasi aliquid voluptatum odio ut molestias veniam
+        dicta reiciendis.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident ipsum eligendi repellat non
+        nostrum. Veniam at distinctio suscipit aliquam, a dolorem quasi aliquid voluptatum odio ut molestias veniam
+        dicta reiciendis.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident ipsum eligendi repellat non
+        nostrum. Veniam at distinctio suscipit aliquam, a dolorem quasi aliquid voluptatum odio ut molestias veniam
+        dicta reiciendis.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident ipsum eligendi repellat non
+        nostrum. Veniam at distinctio suscipit aliquam, a dolorem quasi aliquid voluptatum odio ut molestias veniam
+        dicta reiciendis.
+      </p><br>
+    </article>
+  </div>
+  <div vw class="enabled" id="PluginLibras" aria-labelledby="tradutordelibras">
+    <div vw-access-button class="active" role="button"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  </script>
+  <footer class="contentinfo">
+    <a href="mentions.html"><b>Mentions légales</b></a>
+    <p>@credits</p>
+    <a href="">Plan du site</a>
+  </footer>
+</body>
+
+</html>

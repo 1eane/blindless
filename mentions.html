@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="pt-BR, en">
+
+<head>
+  <title>Blindless</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description"
+    content="Flex Box, Foco Visivel e Contraste Textual: aprendizado em CSS de acordo com a WCAG 2.1." />
+  <meta name="keywords" content="Acessibilidade, CSS, Flex Box, Foco Visível, Contraste Textual, Aprendizado.">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    .act,
+    h2 {
+      margin-left: 50px;
+    }
+
+    h2 {
+      background-color: rgb(0, 0, 0);
+      color: rgb(255, 255, 255);
+      padding: 10px;
+      margin: 3px;
+      font-size: 32px;
+    }
+
+    .actu {
+      background-color: rgb(255, 255, 255);
+      color: rgb(0, 0, 0);
+      padding: 10px;
+      margin: 3px;
+      font-size: 15px;
+      border: 2px solid rgb(0, 0, 0);
+    }
+
+    body {
+      font-family: Arial;
+      margin: 0;
+      font-size: 16px;
+    }
+
+    .FirstBar {
+      background-color: rgb(0, 0, 0);
+      text-align: center;
+      padding: 12px;
+    }
+
+    .FirstBar a {
+      text-decoration: none;
+      color: #ffffff;
+      padding-inline: 15px;
+    }
+
+    .FirstBar a:hover {
+      color: rgb(168, 168, 168);
+      font-weight: bold;
+      text-decoration: underline;
+    }
+
+    .banner {
+      padding: 1.0em;
+      text-align: center;
+      background: white;
+      color: black;
+    }
+
+    .menu {
+      display: flex;
+      margin-bottom: 60px;
+      justify-content: center;
+    }
+
+    .menu a {
+      color: black;
+      padding: 16px 40px;
+      text-decoration: none;
+      text-align: center;
+      font-size: 18px;
+    }
+
+    .menu a:hover {
+      background-color: rgb(189, 189, 189);
+      color: black;
+      padding: 16px 40px;
+    }
+
+    .logo {
+      width: 11%;
+    }
+
+    .img-responsive {
+      border-radius: 80px;
+    }
+
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .main {
+      flex: 70%;
+      background-color: white;
+      padding: 20px;
+      font-size: 18px;
+    }
+
+    .work-content {
+      font-size: larger;
+    }
+
+    .contentinfo {
+      padding: 20px;
+      text-align: center;
+      background: #000000;
+      color: white;
+    }
+
+    .a:hover,
+    .a:visited,
+    .a:focus {
+      color: black;
+      outline: 3px dotted;
+      padding: 1.0em;
+    }
+
+    .secondary {
+      padding: 3em 0;
+      background-color: rgb(0, 0, 0);
+      color: white;
+      font-weight: 700;
+    }
+
+    .container-secondary {
+      width: 90%;
+      max-width: 1280px;
+      margin: 0 auto;
+
+    }
+
+    @media screen and (max-width: 700px) {
+
+      .row,
+      .menu {
+        flex-direction: column;
+      }
+    }
+
+    input:hover {
+      opacity: 0.5;
+    }
+
+    .box {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      margin: 0 2%;
+    }
+
+    .box1 {
+      display: flex;
+      margin: 0 3%;
+    }
+
+    .bloc {
+      border-spacing: 70px;
+    }
+
+    .bidonville {
+      height: 400px;
+    }
+
+    .neige {
+      height: 270px;
+    }
+
+    .marche {
+      height: 270px;
+    }
+
+    .jardin {
+      height: 270px;
+    }
+
+    .zoom-image {
+      overflow: hidden
+    }
+
+    .zoom-image img:hover {
+      height: 400px;
+      transform: scale(1.3);
+      transition: 1s ease-in-out;
+    }
+
+    .chevreuil {
+      height: 400px;
+    }
+
+    .wrap {
+      margin: 1%;
+      position: relative;
+    }
+
+    .display-position {
+      position: absolute;
+      top: 110px;
+      left: 20px;
+      width: 70%;
+    }
+
+    .stretch {
+      width: fit-content;
+    }
+
+    .button_slide {
+      color: #000000;
+      border: 2px solid rgb(0, 0, 0);
+      background-color: #ffffff;
+      border-radius: 0px;
+      padding: 18px 36px;
+      display: inline-block;
+      font-family: "Lucida Console", Monaco, monospace;
+      font-size: 14px;
+      letter-spacing: 1px;
+      cursor: pointer;
+      box-shadow: inset 0 0 0 0 #838383;
+      -webkit-transition: ease-out 0.4s;
+      -moz-transition: ease-out 0.4s;
+      transition: ease-out 0.4s;
+    }
+
+    .slide_down:hover {
+      box-shadow: inset 0 100px 0 0 #838383;
+    }
+
+    .language {
+      color: #616161;
+    }
+
+    .wrapper {
+      font-size: 1em;
+    }
+
+    .wrapper p {
+      font-size: 1em;
+    }
+
+    input[id=normal]:checked~.wrapper {
+      font-size: 1em;
+    }
+
+    input[id=gross]:checked~.wrapper {
+      font-size: 1.5em;
+    }
+
+    input[id=groesser]:checked~.wrapper {
+      font-size: 2em;
+    }
+
+    input[id=hulk]:checked~.wrapper {
+      font-size: 2.5em;
+    }
+
+
+
+
+
+    .wrapper {
+      font-size: 1em;
+    }
+
+    .wrapper p {
+      font-size: 1em;
+    }
+
+    input[id=normal]:checked~.wrapper {
+      font-size: 1em;
+    }
+
+    input[id=gross]:checked~.wrapper {
+      font-size: 1.5em;
+    }
+
+    input[id=groesser]:checked~.wrapper {
+      font-size: 2em;
+    }
+
+    input[id=hulk]:checked~.wrapper {
+      font-size: 2.5em;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div>
+      <p><u>Langue actuelle:</u> Français (<a href="index_anglais.html" class="language"><b>clickez ici pour mettre en
+            anglais</b></a>)</p>
+    </div>
+    <div class="banner">
+      <img class="logo" src="./images/LogoBlindless.png" alt="Logo de la page web, il est inscrit Blindless">
+    </div>
+    <nav>
+      <div class="menu">
+        <a href="index.html" class="accueil a"><b>Accueil</b></a>
+        <a href="" class="a"><b>Actualités</b></a>
+        <a href="" class="a"><b>Vidéos</b></a>
+        <a href="" class="a"><b>Débats</b></a>
+        <a href="" class="a"><b>Monde</b></a>
+        <a href="contact.html" class="a"><b>Services</b></a>
+      </div>
+      <div class="FirstBar">
+        <a href="">Culture</a>
+        <a href="">Environnement</a>
+        <a href="">Politique</a>
+        <a href="">Economie</a>
+        <a href="">Juridique</a>
+        <a href="">Energie</a>
+        <a href="">Jeunesse</a>
+        <a href="">Etat</a>
+        <a href="">Finance</a>
+        <a href="">Gestion</a>
+        <a href="">Innovation</a>
+      </div>
+    </nav>
+  </header>
+  <br><br>
+  <h1 class="act"><b>Mentions</b></h1>
+  <h3 class="act">1. Informations légales</h3>
+  <p class="act">Le site Blindless est édité par Léane Diraison / Margaux Argentin / Yvan Allioux, société au capital
+    de 0€,
+    immatriculée au registre du commerce et des sociétés de Lannion sous le numéro 1234, dont le siège social est situé
+    L’ENSSAT.
+    <br>Directeur de la publication : Chef
+    <br>Contact : chef@gmail.com
+  </p>
+  <h3 class="act">2. Hébergeur du site</h3>
+  <p class="act">Le site Blindless est hébergé par l’ordinateur, dont le siège social est situé sur la table.
+    <br>Contact de l'hébergeur : blindless@gmail.com
+  </p>
+  <h3 class="act">3. Propriété intellectuelle</h3>
+  <p class="act">Le contenu du site Blindless (textes, images, vidéos, etc.) est la propriété exclusive de Léane
+    Diraison / Margaux
+    Argentin / Yvan Allioux ou de leurs partenaires. Toute reproduction, distribution, modification ou utilisation sans
+    autorisation préalable est strictement interdite.
+  </p>
+  <h3 class="act">4. Données personnelles</h3>
+  <p class="act">Conformément à la réglementation en vigueur, les données personnelles collectées sur le site Blindless
+    sont
+    traitées de manière confidentielle.
+  </p>
+  <h3 class="act">5. Cookies</h3>
+  <p class="act">
+    Le site Blindless utilise des cookies.
+  </p>
+  <h3 class="act">6. Responsabilité</h3>
+  <p class="act">
+    Blindless décline toute responsabilité quant à l'utilisation des informations fournies sur le site. Les articles et
+    contenus publiés sont donnés à titre informatif et ne constituent en aucun cas des conseils ou recommandations.
+  </p>
+  <h3 class="act">7. Liens externes</h3>
+  <p class="act">
+    Le site Blindless peut contenir des liens vers des sites externes. Blindless n'est pas responsable du contenu de ces
+    sites et ne garantit pas l'exactitude ou la pertinence des informations qu'ils fournissent.
+  </p>
+  <h3 class="act">8. Modification des mentions légales</h3>
+  <p class="act">
+    Blindless se réserve le droit de modifier les présentes mentions légales à tout moment. Les utilisateurs du site
+    sont invités à les consulter régulièrement.
+  </p>
+  <br>
+
+  <script src="index.js"></script>
+  <footer class="contentinfo">
+    <a href="mentions.html"><b>Mentions légales</b></a>
+    <p>@credits</p>
+    <a href="">Plan du site</a>
+  </footer>
+</body>
+
+</html>
